@@ -1,0 +1,65 @@
+distances:
+  SierakowiceGdynia: &SierakowiceMadkom
+    routeOptions:
+      - name: "przez Kartuzy"
+        distance: 56
+      - name: "przez Kielno"
+        distance: 61
+      - name: "obwodnica kaszubska"
+        distance: 60
+  SierakowiceKWP: &SierakowiceKWP
+    routeOptions:
+      - name: "przez Żukowo"
+        distance: 55
+      - name: "obwodnica kaszubska"
+        distance: 78
+  KWPMadkom: &KWPMadkom
+    routeOptions:
+      - name: "przez Sopot"
+        distance: 19
+      - name: "obwodnica"
+        distance: 31
+races:
+  - traceDescription: "Sierakowice - Madkom - Sierakowice"
+    destination: "Biuro PPNT Madkom w Gdyni"
+    frequency: 15
+    traceDetails:
+      - from: "Sierakowice"
+        to: "Gdynia Madkom"
+        <<: *SierakowiceMadkom
+      - from: "Gdynia Madkom"
+        to: "Sierakowice"
+        <<: *SierakowiceMadkom
+  - traceDescription: "Sierakowice - KWP Gdańsk - Sierakowice"
+    destination: "Wizyta serwisowa na Komendzie Wojewódzkiej Policji w Gdańsku"
+    frequency: 1
+    traceDetails:
+      - from: "Sierakowice"
+        to: "KWP Gdańsk"
+        <<: *SierakowiceKWP
+      - from: "KWP Gdańsk"
+        to: "Sierakowice"
+        <<: *SierakowiceKWP
+  - traceDescription: "Sierakowice - KWP Gdańsk - Gdynia - Sierakowice"
+    destination: "Wizyta serwisowa w KWP i biuro Madkom w Gdyni"
+    frequency: 1
+    traceDetails:
+      - from: "Sierakowice"
+        to: "KWP Gdańsk"
+        <<: *SierakowiceKWP
+      - from: "KWP Gdańsk"
+        to: "Gdynia Madkom"
+        <<: *KWPMadkom
+      - from: "Gdynia Madkom"
+        to: "Sierakowice"
+        <<: *SierakowiceMadkom
+
+#  - name: "Sierakowice - Kraków Madkom"
+#    from: "Sierakowice"
+#    to: "Kraków Madkom"
+#    frequency: 0.1
+#    options:
+#      - name: "Kraków"
+#        description: "Trasa z Sierakowic do Madkom oddział Kraków"
+#        distance: 670
+

@@ -1,0 +1,15 @@
+Company:
+    name: "Maciej Samotyj-Leńczewski SAMSOFT"
+    nip: "589-168-56-38"
+    address: "ul. Sierakowice 1, 83-340 Sierakowice"
+Person:
+    forename: "Maciej"
+    surname: "Samotyj-Leńczewski"
+    adress: "ul. Sierakowice 1, 83-340 Sierakowice"
+Vehicle:
+    brand: "Skoda"
+    model: "Superb"
+    year: 2018
+    registration_number: "DW 7SL03"
+    vin: "TMBAJ7NP3J7572284"
+    engin_capacity: "1968 cm3"

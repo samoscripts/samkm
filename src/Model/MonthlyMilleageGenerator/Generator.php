@@ -7,13 +7,15 @@ use DateTime;
 class Generator
 {
     public function __construct(
-        private int $startMileage,
-        private int $endMileage,
+        private int    $startMileage,
+        private int    $endMileage,
         private string $startDate,
         private string $endDate,
-        private int $tolerance = 300,
-        private int $maxTolerance = 1600
-    ) {}
+        private int    $tolerance = 300,
+        private int    $maxTolerance = 1600
+    )
+    {
+    }
 
     public function generateMonthlyMileage(): array
     {
@@ -31,10 +33,10 @@ class Generator
         return ($interval->y * 12) + $interval->m + 1; // +1 to include the end month
     }
 
-    private function calculateAverageKilometersPerMonth(int $totalMonths): float
+    private function calculateAverageKilometersPerMonth(int $totalMonths): int
     {
         $totalKilometers = $this->endMileage - $this->startMileage;
-        return $totalKilometers / $totalMonths;
+        return round($totalKilometers / $totalMonths);
     }
 
     private function generateMileageArray(int $totalMonths, float $averageKilometersPerMonth): array
@@ -55,12 +57,18 @@ class Generator
             if ($i == $totalMonths - 1) {
                 $monthlyKilometers = $this->endMileage - $currentMileage;
             }
-            if($monthlyKilometers > $this->maxTolerance) {
+            if ($monthlyKilometers > $this->maxTolerance) {
                 throw new \Exception('Miesięczny przebieg przekracza maksymalną dopuszczalną wartość. Spróbuj ponownie albo zmień parametry wejściowe.');
             }
 
             $currentMileage += $monthlyKilometers;
-            $monthlyMileage[$month->format('Y-m')] = round($monthlyKilometers);
+            $monthlyMileage[$month->format('Y-m')] = [
+                'mileage' => $monthlyKilometers,
+                'mileageStart' => $currentMileage - $monthlyKilometers,
+                'mileageEnd' => $currentMileage,
+                'year' => $month->format('Y'),
+                'month' => $month->format('m')
+            ];
         }
 
         return $monthlyMileage;

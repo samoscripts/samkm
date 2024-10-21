@@ -1,192 +1,192 @@
 2020-07:
-  mileage: 858.0
+  mileage: 946.0
   mileageStart: 126345
-  mileageEnd: 127203.0
+  mileageEnd: 127291.0
 2020-08:
-  mileage: 998.0
-  mileageStart: 127203.0
-  mileageEnd: 128201.0
-2020-09:
-  mileage: 666.0
-  mileageStart: 128201.0
-  mileageEnd: 128867.0
-2020-10:
-  mileage: 651.0
-  mileageStart: 128867.0
-  mileageEnd: 129518.0
-2020-11:
-  mileage: 708.0
-  mileageStart: 129518.0
-  mileageEnd: 130226.0
-2020-12:
-  mileage: 843.0
-  mileageStart: 130226.0
-  mileageEnd: 131069.0
-2021-01:
-  mileage: 865.0
-  mileageStart: 131069.0
-  mileageEnd: 131934.0
-2021-02:
-  mileage: 983.0
-  mileageStart: 131934.0
-  mileageEnd: 132917.0
-2021-03:
-  mileage: 611.0
-  mileageStart: 132917.0
-  mileageEnd: 133528.0
-2021-04:
-  mileage: 1104.0
-  mileageStart: 133528.0
-  mileageEnd: 134632.0
-2021-05:
-  mileage: 953.0
-  mileageStart: 134632.0
-  mileageEnd: 135585.0
-2021-06:
-  mileage: 577.0
-  mileageStart: 135585.0
-  mileageEnd: 136162.0
-2021-07:
-  mileage: 947.0
-  mileageStart: 136162.0
-  mileageEnd: 137109.0
-2021-08:
-  mileage: 1002.0
-  mileageStart: 137109.0
-  mileageEnd: 138111.0
-2021-09:
-  mileage: 557.0
-  mileageStart: 138111.0
-  mileageEnd: 138668.0
-2021-10:
-  mileage: 973.0
-  mileageStart: 138668.0
-  mileageEnd: 139641.0
-2021-11:
-  mileage: 712.0
-  mileageStart: 139641.0
-  mileageEnd: 140353.0
-2021-12:
-  mileage: 1126.0
-  mileageStart: 140353.0
-  mileageEnd: 141479.0
-2022-01:
-  mileage: 1122.0
-  mileageStart: 141479.0
-  mileageEnd: 142601.0
-2022-02:
-  mileage: 1027.0
-  mileageStart: 142601.0
-  mileageEnd: 143628.0
-2022-03:
-  mileage: 784.0
-  mileageStart: 143628.0
-  mileageEnd: 144412.0
-2022-04:
-  mileage: 913.0
-  mileageStart: 144412.0
-  mileageEnd: 145325.0
-2022-05:
-  mileage: 759.0
-  mileageStart: 145325.0
-  mileageEnd: 146084.0
-2022-06:
-  mileage: 737.0
-  mileageStart: 146084.0
-  mileageEnd: 146821.0
-2022-07:
-  mileage: 984.0
-  mileageStart: 146821.0
-  mileageEnd: 147805.0
-2022-08:
-  mileage: 1081.0
-  mileageStart: 147805.0
-  mileageEnd: 148886.0
-2022-09:
-  mileage: 783.0
-  mileageStart: 148886.0
-  mileageEnd: 149669.0
-2022-10:
-  mileage: 1036.0
-  mileageStart: 149669.0
-  mileageEnd: 150705.0
-2022-11:
-  mileage: 622.0
-  mileageStart: 150705.0
-  mileageEnd: 151327.0
-2022-12:
-  mileage: 795.0
-  mileageStart: 151327.0
-  mileageEnd: 152122.0
-2023-01:
-  mileage: 864.0
-  mileageStart: 152122.0
-  mileageEnd: 152986.0
-2023-02:
-  mileage: 865.0
-  mileageStart: 152986.0
-  mileageEnd: 153851.0
-2023-03:
-  mileage: 634.0
-  mileageStart: 153851.0
-  mileageEnd: 154485.0
-2023-04:
-  mileage: 649.0
-  mileageStart: 154485.0
-  mileageEnd: 155134.0
-2023-05:
-  mileage: 1027.0
-  mileageStart: 155134.0
-  mileageEnd: 156161.0
-2023-06:
-  mileage: 632.0
-  mileageStart: 156161.0
-  mileageEnd: 156793.0
-2023-07:
-  mileage: 746.0
-  mileageStart: 156793.0
-  mileageEnd: 157539.0
-2023-08:
-  mileage: 789.0
-  mileageStart: 157539.0
-  mileageEnd: 158328.0
-2023-09:
-  mileage: 1047.0
-  mileageStart: 158328.0
-  mileageEnd: 159375.0
-2023-10:
-  mileage: 553.0
-  mileageStart: 159375.0
-  mileageEnd: 159928.0
-2023-11:
-  mileage: 1013.0
-  mileageStart: 159928.0
-  mileageEnd: 160941.0
-2023-12:
-  mileage: 674.0
-  mileageStart: 160941.0
-  mileageEnd: 161615.0
-2024-01:
-  mileage: 776.0
-  mileageStart: 161615.0
-  mileageEnd: 162391.0
-2024-02:
-  mileage: 626.0
-  mileageStart: 162391.0
-  mileageEnd: 163017.0
-2024-03:
-  mileage: 780.0
-  mileageStart: 163017.0
-  mileageEnd: 163797.0
-2024-04:
   mileage: 575.0
-  mileageStart: 163797.0
-  mileageEnd: 164372.0
+  mileageStart: 127291.0
+  mileageEnd: 127866.0
+2020-09:
+  mileage: 1135.0
+  mileageStart: 127866.0
+  mileageEnd: 129001.0
+2020-10:
+  mileage: 941.0
+  mileageStart: 129001.0
+  mileageEnd: 129942.0
+2020-11:
+  mileage: 1011.0
+  mileageStart: 129942.0
+  mileageEnd: 130953.0
+2020-12:
+  mileage: 585.0
+  mileageStart: 130953.0
+  mileageEnd: 131538.0
+2021-01:
+  mileage: 927.0
+  mileageStart: 131538.0
+  mileageEnd: 132465.0
+2021-02:
+  mileage: 726.0
+  mileageStart: 132465.0
+  mileageEnd: 133191.0
+2021-03:
+  mileage: 966.0
+  mileageStart: 133191.0
+  mileageEnd: 134157.0
+2021-04:
+  mileage: 842.0
+  mileageStart: 134157.0
+  mileageEnd: 134999.0
+2021-05:
+  mileage: 684.0
+  mileageStart: 134999.0
+  mileageEnd: 135683.0
+2021-06:
+  mileage: 807.0
+  mileageStart: 135683.0
+  mileageEnd: 136490.0
+2021-07:
+  mileage: 859.0
+  mileageStart: 136490.0
+  mileageEnd: 137349.0
+2021-08:
+  mileage: 808.0
+  mileageStart: 137349.0
+  mileageEnd: 138157.0
+2021-09:
+  mileage: 631.0
+  mileageStart: 138157.0
+  mileageEnd: 138788.0
+2021-10:
+  mileage: 1040.0
+  mileageStart: 138788.0
+  mileageEnd: 139828.0
+2021-11:
+  mileage: 788.0
+  mileageStart: 139828.0
+  mileageEnd: 140616.0
+2021-12:
+  mileage: 949.0
+  mileageStart: 140616.0
+  mileageEnd: 141565.0
+2022-01:
+  mileage: 1121.0
+  mileageStart: 141565.0
+  mileageEnd: 142686.0
+2022-02:
+  mileage: 700.0
+  mileageStart: 142686.0
+  mileageEnd: 143386.0
+2022-03:
+  mileage: 562.0
+  mileageStart: 143386.0
+  mileageEnd: 143948.0
+2022-04:
+  mileage: 1089.0
+  mileageStart: 143948.0
+  mileageEnd: 145037.0
+2022-05:
+  mileage: 1133.0
+  mileageStart: 145037.0
+  mileageEnd: 146170.0
+2022-06:
+  mileage: 815.0
+  mileageStart: 146170.0
+  mileageEnd: 146985.0
+2022-07:
+  mileage: 817.0
+  mileageStart: 146985.0
+  mileageEnd: 147802.0
+2022-08:
+  mileage: 957.0
+  mileageStart: 147802.0
+  mileageEnd: 148759.0
+2022-09:
+  mileage: 966.0
+  mileageStart: 148759.0
+  mileageEnd: 149725.0
+2022-10:
+  mileage: 1019.0
+  mileageStart: 149725.0
+  mileageEnd: 150744.0
+2022-11:
+  mileage: 833.0
+  mileageStart: 150744.0
+  mileageEnd: 151577.0
+2022-12:
+  mileage: 777.0
+  mileageStart: 151577.0
+  mileageEnd: 152354.0
+2023-01:
+  mileage: 611.0
+  mileageStart: 152354.0
+  mileageEnd: 152965.0
+2023-02:
+  mileage: 823.0
+  mileageStart: 152965.0
+  mileageEnd: 153788.0
+2023-03:
+  mileage: 1018.0
+  mileageStart: 153788.0
+  mileageEnd: 154806.0
+2023-04:
+  mileage: 919.0
+  mileageStart: 154806.0
+  mileageEnd: 155725.0
+2023-05:
+  mileage: 648.0
+  mileageStart: 155725.0
+  mileageEnd: 156373.0
+2023-06:
+  mileage: 747.0
+  mileageStart: 156373.0
+  mileageEnd: 157120.0
+2023-07:
+  mileage: 797.0
+  mileageStart: 157120.0
+  mileageEnd: 157917.0
+2023-08:
+  mileage: 843.0
+  mileageStart: 157917.0
+  mileageEnd: 158760.0
+2023-09:
+  mileage: 871.0
+  mileageStart: 158760.0
+  mileageEnd: 159631.0
+2023-10:
+  mileage: 860.0
+  mileageStart: 159631.0
+  mileageEnd: 160491.0
+2023-11:
+  mileage: 789.0
+  mileageStart: 160491.0
+  mileageEnd: 161280.0
+2023-12:
+  mileage: 829.0
+  mileageStart: 161280.0
+  mileageEnd: 162109.0
+2024-01:
+  mileage: 583.0
+  mileageStart: 162109.0
+  mileageEnd: 162692.0
+2024-02:
+  mileage: 870.0
+  mileageStart: 162692.0
+  mileageEnd: 163562.0
+2024-03:
+  mileage: 735.0
+  mileageStart: 163562.0
+  mileageEnd: 164297.0
+2024-04:
+  mileage: 997.0
+  mileageStart: 164297.0
+  mileageEnd: 165294.0
 2024-05:
-  mileage: 1030.0
-  mileageStart: 164372.0
-  mileageEnd: 165402.0
+  mileage: 675.0
+  mileageStart: 165294.0
+  mileageEnd: 165969.0
 2024-06:
-  mileage: 1359.0
-  mileageStart: 165402.0
+  mileage: 792.0
+  mileageStart: 165969.0
   mileageEnd: 166761.0

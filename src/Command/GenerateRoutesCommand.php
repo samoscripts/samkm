@@ -9,6 +9,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class GenerateRoutesCommand extends CommandAbstract
 {
+    use RouteGeneratorTrait;
     public function __construct()
     {
         $this->setName('generate:routes')
@@ -42,6 +43,10 @@ class GenerateRoutesCommand extends CommandAbstract
                 ]
             );
     }
+
+    /**
+     * @throws \Exception
+     */
     public function execute(array $args): void
     {
         if ($this->handleInfoOption($args)) {
@@ -75,30 +80,5 @@ class GenerateRoutesCommand extends CommandAbstract
     private function extractYearMonth(string $yearMonth): array
     {
         return explode('-', $yearMonth);
-    }
-
-    private function generateRoutes(string $year, string $month, int $distanceApproximate, int $distanceStart): RouteList
-    {
-        $racesGenerator = new RoutesGenerator(
-            new RouteList(
-                $year,
-                $month,
-                $distanceStart
-            ),
-            $distanceApproximate
-        );
-        return  $racesGenerator->getRoutes();
-    }
-
-    private function printReport(RouteList $routeReport): void
-    {
-        $reportEntity = ReportFactory::mapTracesListToYamlConfiguration($routeReport);
-        $html = new HtmlTemplate1($reportEntity);
-        $html->print($reportEntity->meta->year, $reportEntity->meta->month);
-
-        foreach ($reportEntity->routeList->routes as $route) {
-            echo $route->date->format('Y-m-d') . " - Trasa: " . $route->destination . " (" . $route->distance . " km)\n";
-        }
-        echo $reportEntity->routeList->mileCounter . " km\n";
     }
 }

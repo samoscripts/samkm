@@ -6,6 +6,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class GenerateMonthlyMileageCommand extends CommandAbstract
 {
+    use RouteGeneratorTrait;
     public function __construct()
     {
         $this->setName('generate:monthly:mileage')
@@ -86,29 +87,37 @@ class GenerateMonthlyMileageCommand extends CommandAbstract
         $generator = new Generator($mileageStart, $mileageEnd, $dateStart, $dateEnd, $tolerance, $maxTolerance);
         $monthlyMileage = $generator->generateMonthlyMileage();
 
-        foreach ($monthlyMileage as $month => $mileage) {
-            echo "{$month}: {$mileage} km\n";
+        foreach ($monthlyMileage as $month => $mileageData) {
+            echo "{$month}: {$mileageData['mileage']} km\n";
         }
-        $this->saveMonthlyMileageToYaml($monthlyMileage, $mileageStart);
         if($generatePdf) {
-            foreach ($monthlyMileage as $month => $mileage) {
-                exec("php src/cli.php gr -ym {$month} -d {$mileage} -ds {$mileageStart}");
-            }
-        }
-    }
+            foreach ($monthlyMileage as $mileageData) {
+                $routeReport = $this->generateRoutes(
+                    $mileageData['year'],
+                    $mileageData['month'],
+                    $mileageData['mileage'],
+                    $mileageStart
+                );
+                $mileageStart = $routeReport->mileageCounterFinal;
+                $routeReports[] = $routeReport;
 
-    private function saveMonthlyMileageToYaml(array $monthlyMileage, $mileageStart): void
-    {
-        $monthlyMileageSummary = [];
-        foreach ($monthlyMileage as $month => $mileage) {
-            $monthlyMileageSummary[$month] = [
-                'mileage' => $mileage,
-                'mileageStart' => $mileageStart,
-                'mileageEnd' => $mileageStart+$mileage
-            ];
-            $mileageStart += $mileage;
+
+            }
+
+            foreach ($routeReports as $routeReport) {
+                $pid = pcntl_fork();
+                if ($pid == -1) {
+                    die('nie udało się utworzyć procesu');
+                } elseif ($pid) {
+                    continue;
+                } else {
+                    $this->printReport($routeReport);
+                    exit(0);
+                }
+            }
+
+
+
         }
-        $yamlContent = Yaml::dump($monthlyMileageSummary, 4, 2);
-        file_put_contents(__DIR__ . '/../data/MonthlyMileageSummary.yaml', $yamlContent);
     }
 }

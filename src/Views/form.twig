@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/default-data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('company_name').value = data.Company.name;
+                    document.getElementById('nip').value = data.Company.nip;
+                    document.getElementById('address').value = data.Company.address;
+                    document.getElementById('forename').value = data.Person.forename;
+                    document.getElementById('surname').value = data.Person.surname;
+                    document.getElementById('vehicle_brand').value = data.Vehicle.brand;
+                    document.getElementById('vehicle_model').value = data.Vehicle.model;
+                    document.getElementById('vehicle_year').value = data.Vehicle.year;
+                    document.getElementById('registration_number').value = data.Vehicle.registration_number;
+                    document.getElementById('vin').value = data.Vehicle.vin;
+                    document.getElementById('engine_capacity').value = data.Vehicle.engin_capacity;
+                    document.getElementById('date_start').value = data.Mileage.dateStart;
+                    document.getElementById('date_end').value = data.Mileage.dateEnd;
+                    document.getElementById('mileage_start').value = data.Mileage.mileage_start;
+                    document.getElementById('mileage_end').value = data.Mileage.mileage_end;
+                    document.getElementById('tolerance_max').value = data.Mileage.tolerance_max;
+                    document.getElementById('tolerance').value = data.Mileage.tolerance;
+                });
+
+            document.getElementById('form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                const data = Object.fromEntries(formData.entries());
+
+                fetch('/api/mileage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log('Success:', result);
+                        showSidebar(result);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+
+            function showSidebar(data) {
+                const sidebar = document.getElementById('sidebar');
+                const sidebarContent = document.getElementById('sidebar-content');
+                sidebarContent.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                sidebar.classList.add('open');
+            }
+
+            document.getElementById('close-sidebar').addEventListener('click', function() {
+                document.getElementById('sidebar').classList.remove('open');
+            });
+        });
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-6">Example Form</h2>
+    <form id="form" action="/submit" method="POST">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% include 'formCompanyInfo.twig' %}
+            {% include 'formPersonalInfo.twig' %}
+        </div>
+        {% include 'formVehicleInfo.twig' %}
+        {% include 'formMileageInfo.twig' %}
+        <div class="mt-6">
+            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Submit</button>
+        </div>
+    </form>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar" class="fixed top-0 right-0 w-1/3 h-full bg-white shadow-lg sidebar">
+    <div class="p-4">
+        <button id="close-sidebar" class="text-red-500">Close</button>
+        <div id="sidebar-content" class="mt-4"></div>
+    </div>
+</div>
+</body>
+</html>

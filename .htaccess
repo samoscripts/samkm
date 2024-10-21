@@ -1,9 +1,19 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-#    RewriteCond %{REQUEST_FILENAME} !-f
-#    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ Public/index.php [QSA,L]
-</IfModule>
-<IfModule !mod_rewrite.c>
-#    echo "RewriteEngine Off"
+    RewriteBase /
+
+    # Redirect all other requests to Public/index.php
+    RewriteRule ^(.*)$ src/routing.php [QSA,L]
+
+    # Deny access to .htaccess file
+    <Files .htaccess>
+        Order Allow,Deny
+        Deny from all
+    </Files>
+
+    # Deny access to sensitive files
+    <FilesMatch "\.(env|json|lock|log|ini|sh|bak|swp|sql)$">
+        Order Allow,Deny
+        Deny from all
+    </FilesMatch>
 </IfModule>

@@ -262,7 +262,7 @@ HTML;
         if(!is_dir(__DIR__ . '/../../../tmp')) {
             mkdir(__DIR__ . '/../../../tmp');
         }
-        file_put_contents(__DIR__ . '/../../../tmp/' . $year.$month . '_document . pdf', $output);
+        file_put_contents(__DIR__ . '/../../../tmp/' . $year.$month . '_document.pdf', $output);
     }
 
 }

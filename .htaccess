@@ -2,7 +2,16 @@
     RewriteEngine On
     RewriteBase /
 
-    # Redirect all other requests to Public/index.php
+    # Allow access to the js directory
+    <FilesMatch "^src/Views/js/.*$">
+        Order Allow,Deny
+        Allow from all
+    </FilesMatch>
+
+    # Exclude js directory from being rewritten
+    RewriteCond %{REQUEST_URI} !^/src/Views/js/
+
+    # Redirect all other requests to src/routing.php
     RewriteRule ^(.*)$ src/routing.php [QSA,L]
 
     # Deny access to .htaccess file

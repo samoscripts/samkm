@@ -4,6 +4,7 @@ namespace App\Model\Report;
 
 use App\Entity\MetaEntity;
 use App\Entity\RouteListEntity;
+use App\Model\MonthlyMilleageGenerator\EventParameters;
 use App\Model\Routes\RouteList;
 use Symfony\Component\Yaml\Yaml;
 use App\Entity\CompanyEntity;
@@ -15,31 +16,13 @@ class ReportFactory
 {
     static private string $yamlFilePath = __DIR__ . '/../../data/HeaderDataToPrint.yaml';
     public static function mapTracesListToYamlConfiguration(
-        RouteList $routeList
+        RouteList $routeList,
+        EventParameters $data
     ): ReportEntity
     {
-        $data = Yaml::parseFile(self::$yamlFilePath);
-
-        $company = new CompanyEntity(
-            $data['Company']['name'],
-            $data['Company']['nip'],
-            $data['Company']['address']
-        );
-
-        $person = new PersonEntity(
-            $data['Person']['forename'],
-            $data['Person']['surname'],
-            $data['Person']['adress']
-        );
-
-        $vehicle = new VehicleEntity(
-            $data['Vehicle']['brand'],
-            $data['Vehicle']['model'],
-            $data['Vehicle']['year'],
-            $data['Vehicle']['registration_number'],
-            $data['Vehicle']['vin'],
-            $data['Vehicle']['engin_capacity']
-        );
+        $company = $data->company;
+        $person = $data->person;
+        $vehicle = $data->vehicle;
 
         $metaEntity = new MetaEntity(
             $routeList->year,

@@ -5,17 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .main-content {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto;
+            transition: flex 0.3s ease-in-out;
+        }
+
         .sidebar {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
+            width: 0;
+            height: 100%;
+            overflow-y: auto;
+            transition: width 0.3s ease-in-out;
         }
+
         .sidebar.open {
-            transform: translateX(0);
+            width: 33%;
         }
+
+        #sidebar {
+            position: relative;
+        }
+
+
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             fetch('/api/default-data')
                 .then(response => response.json())
                 .then(data => {
@@ -38,63 +62,61 @@
                     document.getElementById('tolerance').value = data.Mileage.tolerance;
                 });
 
-            document.getElementById('form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(event.target);
-                const data = Object.fromEntries(formData.entries());
 
-                fetch('/api/mileage', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then(response => response.json())
-                    .then(result => {
-                        console.log('Success:', result);
-                        showSidebar(result);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            });
-
-            function showSidebar(data) {
-                const sidebar = document.getElementById('sidebar');
-                const sidebarContent = document.getElementById('sidebar-content');
-                sidebarContent.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-                sidebar.classList.add('open');
-            }
-
-            document.getElementById('close-sidebar').addEventListener('click', function() {
+            document.getElementById('close-sidebar').addEventListener('click', function () {
                 document.getElementById('sidebar').classList.remove('open');
+            });
+            document.getElementById('open-sidebar').addEventListener('click', function () {
+                document.getElementById('sidebar').classList.toggle('open');
             });
         });
     </script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
-    <h2 class="text-2xl font-bold mb-6">Example Form</h2>
-    <form id="form" action="/submit" method="POST">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {% include 'formCompanyInfo.twig' %}
-            {% include 'formPersonalInfo.twig' %}
-        </div>
-        {% include 'formVehicleInfo.twig' %}
-        {% include 'formMileageInfo.twig' %}
-        <div class="mt-6">
-            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Submit</button>
-        </div>
-    </form>
-</div>
+<div class="container">
+    <div class="main-content bg-white p-8 rounded-lg shadow-lg">
+        <div class="flex items-center mb-6">
+            <h2 class="text-2xl font-bold mr-4">Example Form</h2>
 
-<!-- Sidebar -->
-<div id="sidebar" class="fixed top-0 right-0 w-1/3 h-full bg-white shadow-lg sidebar">
-    <div class="p-4">
-        <button id="close-sidebar" class="text-red-500">Close</button>
-        <div id="sidebar-content" class="mt-4"></div>
+            <button id="open-sidebar" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Pokaż
+                pliki
+            </button>
+        </div>
+
+        <form id="form" action="/submit" method="POST">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {% include 'formCompanyInfo.twig' %}
+                {% include 'formPersonalInfo.twig' %}
+            </div>
+            {% include 'formVehicleInfo.twig' %}
+            {% include 'formMileageInfo.twig' %}
+        </form>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="bg-white shadow-lg sidebar">
+
+        <div class="p-4">
+            <button id="close-sidebar" class="text-red-500">Close</button>
+            <button onclick="refreshPdfList()" class="text-blue-500 hover:text-blue-700">
+                <i class="fas fa-sync-alt"></i> Odświerz
+            </button>
+            <button onclick="refreshPdfList()" class="text-blue-500 hover:text-blue-700">
+                <i class="fas fa-sync-alt"></i> Odświerz
+            </button>
+            <button type="submit" form="form"
+                    class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 mr-4">Wygeneruj
+            </button>
+            <div id="sidebar-content" class="mt-4">
+                <div id="preloader" class="hidden">
+                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                </div>
+                <div id="pdf-list-container" class="grid grid-cols-1 gap-4">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
+<script src="/src/Views/js/pdfList.js"></script>
 </html>

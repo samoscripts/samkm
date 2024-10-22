@@ -14,9 +14,9 @@ Vehicle:
     vin: "TMBAJ7NP3J7572284"
     engin_capacity: "1968 cm3"
 Mileage:
-    dateStart: "2021-09"
+    dateStart: "2024-04"
     dateEnd: "2024-06"
-    mileage_start: 125432
-    mileage_end: 234567
+    mileage_start: 1000
+    mileage_end: 3000
     tolerance_max: 1000
     tolerance: 300

@@ -39,8 +39,8 @@ final class DownloadAll extends BaseController
             foreach ($files as $file) {
                 if (!$file->isDir()) {
                     $filePath = $file->getRealPath();
-                    $relativePath = substr($filePath, strlen($sourceDir));
-                    $zip->addFile($filePath, $relativePath);
+                    $filename = basename($filePath);
+                    $zip->addFile($filePath, $filename);
                 }
             }
             $zip->close();

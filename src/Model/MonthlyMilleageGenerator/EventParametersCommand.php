@@ -9,7 +9,8 @@ use Symfony\Component\Yaml\Yaml;
 class EventParametersCommand extends EventParameters{
 
 
-    static private string $yamlFilePath = __DIR__ . '/../../data/HeaderDataToPrint.yaml';
+    static private string $yamlVehicleFilePath = BASE_DIR . '/src/data/DefaultVehicleData.yaml';
+    static private string $yamlOwnerFilePath = BASE_DIR . '/src/data/DefaultOwnerData.yaml';
 
 
 
@@ -22,27 +23,28 @@ class EventParametersCommand extends EventParameters{
         $this->tolerance = isset($parsedArgs['tolerance']) ? (int)$parsedArgs['tolerance'] : 300;
         $this->maxTolerance = isset($parsedArgs['tolerance_max']) ? (int)$parsedArgs['tolerance_max'] : 1600;
 
-        $data = Yaml::parseFile(self::$yamlFilePath);
+        $defaultVehicleData = Yaml::parseFile(self::$yamlVehicleFilePath);
+        $defaultOwnerData = Yaml::parseFile(self::$yamlOwnerFilePath);
 
         $this->company = new CompanyEntity(
-            $data['Company']['name'],
-            $data['Company']['nip'],
-            $data['Company']['address']
+            $defaultOwnerData['Company']['name'],
+            $defaultOwnerData['Company']['nip'],
+            $defaultOwnerData['Company']['address']
         );
 
         $this->person = new PersonEntity(
-            $data['Person']['forename'],
-            $data['Person']['surname'],
-            $data['Person']['adress']
+            $defaultOwnerData['Person']['forename'],
+            $defaultOwnerData['Person']['surname'],
+            $defaultOwnerData['Person']['adress']
         );
 
         $this->vehicle = new VehicleEntity(
-            $data['Vehicle']['brand'],
-            $data['Vehicle']['model'],
-            $data['Vehicle']['year'],
-            $data['Vehicle']['registration_number'],
-            $data['Vehicle']['vin'],
-            $data['Vehicle']['engin_capacity']
+            $defaultVehicleData['Vehicle']['brand'],
+            $defaultVehicleData['Vehicle']['model'],
+            $defaultVehicleData['Vehicle']['year'],
+            $defaultVehicleData['Vehicle']['registration_number'],
+            $defaultVehicleData['Vehicle']['vin'],
+            $defaultVehicleData['Vehicle']['engin_capacity']
         );
     }
 }

@@ -7,9 +7,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
     libicu-dev \
     libpq-dev \
-    systemd
+    systemd \
+    libzip-dev \
+    zip
 # Update the package list and install dependencies
-RUN docker-php-ext-install intl calendar
+RUN docker-php-ext-install intl calendar zip
 
 #RUN apt install -y nodejs npm
 #RUN npm install -D tailwindcss

@@ -1,0 +1,8 @@
+Company:
+    name: "Maciej Samotyj-Leńczewski SAMSOFT"
+    nip: "589-168-56-38"
+    address: "ul. Sierakowice 1, 83-340 Sierakowice"
+Person:
+    forename: "Maciej"
+    surname: "Samotyj-Leńczewski"
+    adress: "ul. Sierakowice 1, 83-340 Sierakowice"

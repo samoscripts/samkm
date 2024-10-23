@@ -40,26 +40,34 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            fetch('/api/default-data')
+            fetch('/api/v1/owner', { method: 'GET' })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('company_name').value = data.Company.name;
-                    document.getElementById('nip').value = data.Company.nip;
-                    document.getElementById('address').value = data.Company.address;
-                    document.getElementById('forename').value = data.Person.forename;
-                    document.getElementById('surname').value = data.Person.surname;
-                    document.getElementById('vehicle_brand').value = data.Vehicle.brand;
-                    document.getElementById('vehicle_model').value = data.Vehicle.model;
-                    document.getElementById('vehicle_year').value = data.Vehicle.year;
-                    document.getElementById('registration_number').value = data.Vehicle.registration_number;
-                    document.getElementById('vin').value = data.Vehicle.vin;
-                    document.getElementById('engine_capacity').value = data.Vehicle.engin_capacity;
-                    document.getElementById('date_start').value = data.Mileage.dateStart;
-                    document.getElementById('date_end').value = data.Mileage.dateEnd;
-                    document.getElementById('mileage_start').value = data.Mileage.mileage_start;
-                    document.getElementById('mileage_end').value = data.Mileage.mileage_end;
-                    document.getElementById('tolerance_max').value = data.Mileage.tolerance_max;
-                    document.getElementById('tolerance').value = data.Mileage.tolerance;
+                    const ownerData = data.message;
+                    document.getElementById('company_name').value = ownerData.Company.name;
+                    document.getElementById('nip').value = ownerData.Company.nip;
+                    document.getElementById('address').value = ownerData.Company.address;
+                    document.getElementById('forename').value = ownerData.Person.forename;
+                    document.getElementById('surname').value = ownerData.Person.surname;
+                });
+            fetch('/api/v1/vehicle', { method: 'GET' })
+                .then(response => response.json())
+                .then(data => {
+                    const vehicleData = data.message.Vehicle;
+                    const mileageData = data.message.Mileage;
+
+                    document.getElementById('vehicle_brand').value = vehicleData.brand;
+                    document.getElementById('vehicle_model').value = vehicleData.model;
+                    document.getElementById('vehicle_year').value = vehicleData.year;
+                    document.getElementById('registration_number').value = vehicleData.registration_number;
+                    document.getElementById('vin').value = vehicleData.vin;
+                    document.getElementById('engine_capacity').value = vehicleData.engin_capacity;
+                    document.getElementById('date_start').value = mileageData.dateStart;
+                    document.getElementById('date_end').value = mileageData.dateEnd;
+                    document.getElementById('mileage_start').value = mileageData.mileage_start;
+                    document.getElementById('mileage_end').value = mileageData.mileage_end;
+                    document.getElementById('tolerance_max').value = mileageData.tolerance_max;
+                    document.getElementById('tolerance').value = mileageData.tolerance;
                 });
 
 
@@ -97,19 +105,19 @@
     <div id="sidebar" class="bg-white shadow-lg sidebar">
 
         <div class="p-4">
-            <button id="close-sidebar" class="text-red-500">Close</button>
-            <button onclick="refreshPdfList()" class="text-blue-500 hover:text-blue-700">
-                <i class="fas fa-sync-alt"></i> Odświerz
+            <button id="close-sidebar" class="text-red-500">
+                <i class="fas fa-arrow-right"></i>
             </button>
-            <button onclick="refreshPdfList()" class="text-blue-500 hover:text-blue-700">
-                <i class="fas fa-sync-alt"></i> Odświerz
+
+            <button type="button" onclick="refreshPdfList()"
+                    class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 mr-4 mr-4"><i class="fas fa-sync-alt mr-4"></i>Odświerz
             </button>
             <button type="submit" form="form"
                     class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 mr-4">Wygeneruj
             </button>
             <div id="sidebar-content" class="mt-4">
-                <div id="preloader" class="hidden">
-                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 hidden">
+                    <i class="fas fa-spinner fa-spin text-white text-4xl"></i>
                 </div>
                 <div id="pdf-list-container" class="grid grid-cols-1 gap-4">
                 </div>
@@ -118,5 +126,5 @@
     </div>
 </div>
 </body>
-<script src="/src/Views/js/pdfList.js"></script>
+<script src="/js/pdfList.js"></script>
 </html>

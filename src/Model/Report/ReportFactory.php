@@ -14,7 +14,6 @@ use App\Entity\ReportEntity;
 
 class ReportFactory
 {
-    static private string $yamlFilePath = __DIR__ . '/../../data/HeaderDataToPrint.yaml';
     public static function mapTracesListToYamlConfiguration(
         RouteList $routeList,
         EventParameters $data

@@ -53,7 +53,7 @@ class Generator
 
     private function flushTmp()
     {
-        $files = glob(__DIR__ . '/../../../tmp/*');
+        $files = glob(BASE_DIR . '/tmp/*');
         foreach ($files as $file) {
             if (is_file($file)) {
                 unlink($file);

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<phpunit colors="true" bootstrap="tests/bootstrap.php">
+    <coverage includeUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory suffix="App.php">src/App</directory>
+            <directory suffix=".php">tests</directory>
+            <directory suffix=".php">vendor</directory>
+        </exclude>
+        <report>
+            <html outputDirectory="public/coverage"/>
+        </report>
+    </coverage>
+    <testsuites>
+        <testsuite name="Samkm - ewidencja przebiegu">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="BASE_DIR" value="/var/www"/>
+    </php>
+</phpunit>

@@ -9,10 +9,12 @@ use App\Controller\Owner;
 use App\Controller\Trace;
 use App\Controller\Util\ListRoutesMiddleware;
 use App\Controller\Vehicle;
+use App\Model\MonthlyMilleageGenerator\EventParametersApi;
 use Slim\App;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Routing\RouteCollectorProxy;
+use App\Model\MonthlyMilleageGenerator\Generator;
 
 
 return static function (App $app) {
@@ -27,7 +29,7 @@ return static function (App $app) {
             $app->get('', MileageLog\GetAll::class);
             $app->get('/download', MileageLog\DownloadAll::class);
             $app->get('/download/{fileName}', MileageLog\DownloadOne::class);
-            $app->post('', MileageLog\Create::class);
+            $app->post('', new MileageLog\Create(new Generator(new EventParametersApi())));
         });
         $app->group('/trace', function (RouteCollectorProxy $app): void {
             $app->get('', Trace\GetAll::class);

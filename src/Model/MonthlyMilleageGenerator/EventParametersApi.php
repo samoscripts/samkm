@@ -9,9 +9,7 @@ use DateTime;
 
 class EventParametersApi extends EventParameters
 {
-
-
-    public function __construct($parsedArgs)
+    public function setParameters($parsedArgs): void
     {
         $this->mileageStart = (int)$parsedArgs['mileage_start'];
         $this->mileageEnd = (int)$parsedArgs['mileage_end'];

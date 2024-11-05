@@ -13,9 +13,8 @@ const BASE_DIR = __DIR__ . '/../../';
 require_once __DIR__ . '/ErrorHandler.php';
 
 $app = AppFactory::create();
-$app->addBodyParsingMiddleware(); // Add middleware for parsing request body
 
-// Register routes
+$app->addBodyParsingMiddleware(); // Add middleware for parsing request body
 (require_once __DIR__ . '/Routes.php')($app);
 
 // Create CallableResolver

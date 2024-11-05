@@ -14,8 +14,9 @@ class Generator
     {
     }
 
-    public function generateMonthlyMileage(): void
+    public function generateMonthlyMileage(array $parsedBody): void
     {
+        $this->eventParameters->setParameters($parsedBody);
         $this->flushTmp();
 
         $totalMonths = $this->calculateTotalMonths();

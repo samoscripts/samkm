@@ -70,9 +70,9 @@ class GenerateMonthlyMileageCommand extends CommandAbstract
         $this->validateOptions($parsedArgs);
 
         $generator = new Generator(
-            new EventParametersCommand($parsedArgs)
+            new EventParametersCommand()
         );
-        $generator->generateMonthlyMileage();
+        $generator->generateMonthlyMileage($parsedArgs);
 //        foreach ($monthlyMileage as $month => $mileageData) {
 //            echo "{$month}: {$mileageData['mileage']} km\n";
 //        }

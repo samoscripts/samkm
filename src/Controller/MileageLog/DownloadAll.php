@@ -16,15 +16,20 @@ final class DownloadAll extends BaseController
         Response $response
     ): Response
     {
-        $zipFileName = BASE_DIR . '/tmp/' . uniqid() . '.zip';
-        $this->createZipArchive(BASE_DIR . '/tmp/', $zipFileName);
-
-        $content = file_get_contents($zipFileName);
+        $content = $this->generateZipContent();
         $response->getBody()->write($content);
-        unlink($zipFileName);
         return $response
             ->withHeader('Content-Type', 'application/zip')
             ->withHeader('Content-Disposition', 'attachment; filename="archive.zip"');
+    }
+
+    private function generateZipContent(): string
+    {
+        $zipFileName = BASE_DIR . '/tmp/' . uniqid() . '.zip';
+        $this->createZipArchive(BASE_DIR . '/tmp/', $zipFileName);
+        $content = file_get_contents($zipFileName);
+        unlink($zipFileName);
+        return $content;
     }
 
     private function createZipArchive(string $sourceDir, string $zipFileName): void

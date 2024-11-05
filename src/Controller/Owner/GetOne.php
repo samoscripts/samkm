@@ -6,7 +6,6 @@ namespace App\Controller\Owner;
 
 
 use App\Controller\BaseController;
-use Exception;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Symfony\Component\Yaml\Yaml;

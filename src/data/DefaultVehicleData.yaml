@@ -1,10 +1,10 @@
 Vehicle:
-    brand: "Skoda"
-    model: "Superb"
-    year: 2018
-    registration_number: "DW 7SL03"
+    brand: "Opel"
+    model: "Vectra"
+    year: 2005
+    registration_number: "DW 730SL"
     vin: "TMBAJ7NP3J7572284"
-    engin_capacity: "1968 cm3"
+    engin_capacity: "1800 cm3"
 Mileage:
     dateStart: "2024-04"
     dateEnd: "2024-06"

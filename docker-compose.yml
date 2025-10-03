@@ -1,0 +1,65 @@
+services:
+  # Backend (Laravel / PHP + Composer)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: km_app
+    working_dir: /var/www/
+    user: "1002:1002"          # używamy UID:GID zamiast nazwy
+    environment:
+      HOME: /home/msamotyj
+    volumes:
+      - ./app:/var/www/
+      - ./bash_history/app:/home/msamotyj
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - node
+    command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+    
+
+  # Baza danych (Postgres)
+  db:
+    image: postgres:16
+    container_name: km_db
+    restart: always
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: secret
+      PGDATA: /var/lib/postgresql/data
+      HOME: /var/lib/postgresql/home
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./psql_history:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data   # dane na hosta
+
+  # Node.js do frontendu
+  node:
+    image: node:20
+    container_name: km_node
+    working_dir: /var/www/
+    user: "1002:1002"          # UID:GID taki sam jak w PHP
+    environment:
+      HOME: /home/msamotyj
+    volumes:
+      - ./app:/var/www/
+      - ./bash_history/node:/home/msamotyj
+    command: ["npm", "run", "dev"]
+    # command: ["tail", "-f", "/dev/null"]
+    ports:
+      - "5173:5173"
+    healthcheck:
+      test: ["CMD", "node", "-v"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - db  # opcjonalnie, żeby Node czekał na bazę jeśli potrzebne
+
+volumes:
+  db_data:
+

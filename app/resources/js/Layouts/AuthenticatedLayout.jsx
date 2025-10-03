@@ -6,7 +6,7 @@ import { useTranslations } from '@/utils/translations';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
-export default function AuthenticatedLayout({ header, children }) {
+export default function AuthenticatedLayout({ children }) {
     const user = usePage().props.auth.user;
     const { t } = useTranslations();
 
@@ -175,14 +175,8 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                 </div>
             </nav>
-
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        {header}
-                    </div>
-                </header>
-            )}
+            
+            
 
             <main>{children}</main>
         </div>

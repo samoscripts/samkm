@@ -3,8 +3,13 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["resources/js/*"],
+            "@components/*": ["resources/js/components/*"],
+            "@pages/*": ["resources/js/Pages/*"],
+            "@utils/*": ["resources/js/utils/*"],
+            "@layouts/*": ["resources/js/Layouts/*"],
+            "@auth/*": ["resources/js/Auth/*"],
             "ziggy-js": ["./vendor/tightenco/ziggy"]
         }
     },
-    "exclude": ["node_modules", "public"]
+    "exclude": ["node_modules", "public", ]
 }

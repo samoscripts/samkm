@@ -171,7 +171,7 @@ class MileageController extends Controller
     /**
      * Get addresses list (API endpoint).
      */
-    public function getAddresses(Request $request)
+    public function getAddresses_v1(Request $request)
     {
         $addresses = [
             [
@@ -251,5 +251,208 @@ class MileageController extends Controller
             'data' => $addresses,
             'total' => count($addresses)
         ]);
+    }
+
+    public function getAddresses(Request $request)
+    {
+        $json = <<<EOL
+        {
+    "success": true,
+    "rows": [
+        {
+        "id": 1,
+        "name": "Biuro główne",
+        "street": "ul. Przykładowa 123",
+        "city": "Warszawa",
+        "postal_code": "00-001",
+        "country": "Polska",
+        "notes": "Główne biuro firmy",
+        "created_at": "2024-01-15T10:30:00Z",
+        "updated_at": "2024-01-15T10:30:00Z"
+        },
+        {
+        "id": 2,
+        "name": "Magazyn",
+        "street": "ul. Przemysłowa 45",
+        "city": "Kraków",
+        "postal_code": "30-001",
+        "country": "Polska",
+        "notes": "Magazyn główny",
+        "created_at": "2024-01-16T14:20:00Z",
+        "updated_at": "2024-01-16T14:20:00Z"
+        },
+        {
+        "id": 3,
+        "name": "Oddział",
+        "street": "ul. Krakowska 789",
+        "city": "Kraków",
+        "postal_code": "30-001",
+        "country": "Polska",
+        "notes": "Oddział główny",
+        "created_at": "2024-01-17T10:30:00Z",
+        "updated_at": "2024-01-17T10:30:00Z"
+        },
+        {
+        "id": 4,
+        "name": "Terminal",
+        "street": "ul. Portowa 321",
+        "city": "Gdańsk",
+        "postal_code": "80-001",
+        "country": "Polska",
+        "notes": "Terminal główny",
+        "created_at": "2024-01-18T10:30:00Z",
+        "updated_at": "2024-01-18T10:30:00Z"
+        },
+        {
+        "id": 5,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 6,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 7,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 8,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 9,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 10,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 11,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        },
+        {
+        "id": 12,
+        "name": "Punkt odbioru",
+        "street": "ul. Wrocławska 654",
+        "city": "Wrocław",
+        "postal_code": "50-001",
+        "country": "Polska",
+        "notes": "Punkt odbioru główny",
+        "created_at": "2024-01-19T10:30:00Z",
+        "updated_at": "2024-01-19T10:30:00Z"
+        }
+    ],
+    "columns": [
+        {
+        "title": "Nazwa",
+        "dataIndex": "name",
+        "key": "name",
+        "sorter": true,
+        "filters": [
+            { "text": "Biuro", "value": "biuro" },
+            { "text": "Magazyn", "value": "Magazyn" }
+        ]
+        },
+        {
+        "title": "Ulica",
+        "dataIndex": "street",
+        "key": "street",
+        "sorter": true
+        },
+        {
+        "title": "Miasto",
+        "dataIndex": "city",
+        "key": "city",
+        "sorter": true,
+        "filters": [
+            { "text": "Warszawa", "value": "warszawa" },
+            { "text": "Kraków", "value": "kraków" }
+        ]
+        },
+        {
+        "title": "Kod pocztowy",
+        "dataIndex": "postal_code",
+        "key": "postal_code",
+        "sorter": true
+        }
+    ],
+    "actions": [
+        {
+        "key": "edit",
+        "label": "Edytuj",
+        "type": "primary",
+        "onClick": "edit",
+        "icon": "Pencil"
+        },
+        {
+        "key": "delete",
+        "label": "Usuń",
+        "type": "danger",
+        "onClick": "delete",
+        "icon": "Trash"
+        }
+    ],
+    "pagination": {
+        "current": 1,
+        "pageSize": 5,
+        "total": 12,
+        "showSizeChanger": true,
+        "pageSizeOptions": ["5", "10", "15", "20"]
+    }
+}
+EOL;
+
+        return response()->json(json_decode($json, true));
+        
     }
 }

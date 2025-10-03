@@ -7,8 +7,8 @@
 6 silly config load:file:/usr/local/etc/npmrc
 7 verbose title npm run dev
 8 verbose argv "run" "dev"
-9 verbose logfile logs-max:10 dir:/home/msamotyj/.npm/_logs/2025-10-02T11_51_59_622Z-
-10 verbose logfile /home/msamotyj/.npm/_logs/2025-10-02T11_51_59_622Z-debug-0.log
+9 verbose logfile logs-max:10 dir:/home/msamotyj/.npm/_logs/2025-10-03T14_50_22_728Z-
+10 verbose logfile /home/msamotyj/.npm/_logs/2025-10-03T14_50_22_728Z-debug-0.log
 11 silly logfile done cleaning log files
 12 verbose stack Error: command failed
 12 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:22:22)
@@ -30,4 +30,4 @@
 20 verbose npm  v10.8.2
 21 verbose exit 1
 22 verbose code 1
-23 error A complete log of this run can be found in: /home/msamotyj/.npm/_logs/2025-10-02T11_51_59_622Z-debug-0.log
+23 error A complete log of this run can be found in: /home/msamotyj/.npm/_logs/2025-10-03T14_50_22_728Z-debug-0.log

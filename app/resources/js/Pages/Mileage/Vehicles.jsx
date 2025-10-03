@@ -14,7 +14,6 @@ export default function MileageVehicles() {
                 </h2>
             }
             sidebarItems={mileageSidebarItems}
-            currentRoute="mileage.vehicles"
         >
             <Head title={`${t('mileage.title')} - ${t('mileage.nav.vehicles')}`} />
 
